@@ -1,1 +1,52 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>颇可网 - 图片广场</title>
+    <link rel="shortcut icon" href="https://www.poco.cn/favicon.ico">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.1/jquery.js"></script>
+    <script src="javascript/loading.js"></script>
+    <script src="javascript/loading_more.js"></script>
+
+    <link href="css/index.css" rel="stylesheet">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.js"></script>
+
+    <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+  
+    <!-- 引入 layui.js -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/layui/2.6.7/layui.js"></script>
+</head>
+
+<body>
+
+    <div class="images-list"></div>
+
+</body>
+<!-- 图片弹窗 -->
+<script type="text/javascript">
+    $(document).on('click', '.img-lazyload', function () {
+        var url = $(this).attr('src');
+        var title_ = $(this).attr('title');
+        var px = $(this).attr('img-data');
+        var size = $(this).attr('img-size');
+        //console.log(url);
+        var wh = $(window).width() / 1.5;
+        var ht = $(window).height() / 1.1;
+        var img = '<img style="width:' + wh + 'px;height:' + ht + 'px;object-fit: contain;" src="' + url + '">'
+        layer.open({
+            title: '标题: ' + title_ + '<a style="padding-left: 5%;">分辨率: ' + px + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大小: ' + size + ' KB</a>',
+            type: 1,//Page层类型
+            shade: 0.6,//遮罩透明度
+            anim: 1,//0-6的动画形式，-1不开启
+            content: img
+        });
+    });
+</script>
+
+</html>
